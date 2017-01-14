@@ -1,84 +1,97 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        
-    </head>
-    <body> 
-	<table style="width:100%">
-		<tr>
-			<th style="color:green;  font-size:150%;">City</th>
-			<th style="color:green;  font-size:150%;">MAP</th> 
-  </tr>
-  <tr>
-    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('rosh%20tzurim')">Rosh Tzurim</a></td>
-    <td rowspan="16"><iframe width="600" height="450" frameborder="0" style="border:0" id="mymap"  src="https://www.google.com/maps/embed/v1/place?q=israel&key=AIzaSyBO8_fzTmLJDBW5TEIRCrC6Trli7QUYxfg" allowfullscreen></iframe>
-</td> 
-  </tr>
-  <tr>
-    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Jerusalem')">Jerusalem</a></td>
-  </tr>
-    <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Efrat')">Efrat</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('tel%20aviv')">Tel Aviv</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Haifa')">Haifa</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Katzerin')">Katzerin</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Beer%20Sheva')">Beer Sheva</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Sde%20Boker')">Sde Boker</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Tiberias')">Tiberias</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Paris')">Paris</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('London')">London</a></td>
-  </tr>
-    <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Dublin')">Dublin</a></td>
-  </tr>
-    <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('Madrid')">Madrid</a></td>
-  </tr>
-    <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('New%20York')">New York</a></td>
-  </tr>
-      <tr>
-	    <td><a id="myMap" title="Click to do something"
- href="#" onclick="MyFunction('New%20delhi')">New Delhi</a></td>
-  </tr>
-</table>
-<h1 style="color:green;  font-size:330%;">CHOOSE YOUR DESTINATION </h1>
-<script type= "text/javascript" language="javascript">
-function MyFunction(myPlace){
-console.log("in my function with place", myPlace);
-document.getElementById("mymap").setAttribute("src","https://www.google.com/maps/embed/v1/place?q="+myPlace+"&key=AIzaSyBO8_fzTmLJDBW5TEIRCrC6Trli7QUYxfg");
-}
+  <html>
+      <head>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJpKHvZqDFWpdAbK5ViY8u7D2ISXKsqYs" type="text/javascript"></script>
+            <script type="text/javascript" src="maps.js"></script>
+            <!--other script and also external css included over here-->
+      </head>
 
-</script>
+    <body onload="initialize()">
+        <table style="
+        width:100%">
+          <tr>
+            <th style="color:green;  font-size:150%;">City</th>
+            <th style="color:green;  font-size:150%;">MAP</th>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('rosh%20tzurim')">Rosh Tzurim</a>
+            </td>
+            <td rowspan="16"  onload="initialize()">
+              <div id="myMap" style="width: 600px; height: 450px; border: 0; frameborder: 0;">MAP GOES HERE</div>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Jerusalem')">Jerusalem</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Efrat')">Efrat</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('tel aviv', 'Tel Aviv')">Tel Aviv</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Haifa')">Haifa</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Katzerin')">Katzerin</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Beer Sheva')">Beer Sheva</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Sde Boker')">Sde Boker</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Tiberias')">Tiberias</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Paris')">Paris</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('London')">London</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Dublin')">Dublin</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('Australia')">Australia</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('New York')">New York</a>
+            </td>
+          </tr>
+          <tr>
+            <td><a  title="Click to do something"
+              href="#" onclick="MyFunction('New delhi')">New Delhi</a>
+            </td>
+          </tr>
+      </table>
+      <h1 style="color:green;  font-size:150%;">CHOOSE YOUR DESTINATION </h1>
     </body>
-</html>
+  </html>
