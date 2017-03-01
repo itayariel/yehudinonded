@@ -1,0 +1,65 @@
+body {
+     background-image: url("image/greenn.jpg");
+	 background-size: 1400px 1000px;
+	 background-repeat: no-repeat;
+	 color: green;
+	 font-weight: bold;
+} 
+
+#myMap{
+	margin: 0;
+	padding: 0;
+	width: 650px;
+	height: 520px;
+	max-width: none;
+	border: 30;
+	frameborder: 40;
+}
+
+input[type="button"]{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+	box-shadow: 0 2px #999;
+	border-radius: 15px;
+}
+input[type=textbox] {
+    width: 15%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: content-box;
+	border: 3px solid #555;
+}
+
+input[type="text"]{
+    width: 15%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: content-box;
+	border: 3px solid #555;
+}
+h1{
+	font-weight: bold;
+	size: 200px;
+}
+#start{
+	color: blue;
+}
+h3{
+	color: black;
+	font-weight: bold;
+}
+strong{
+	color: black;
+}
+#travelMode{
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 10px;
+   background-color: #eec111; 
+}

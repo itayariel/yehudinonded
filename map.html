@@ -1,97 +1,123 @@
+<!-- Google maps api: key="AIzaSyAJpKHvZqDFWpdAbK5ViY8u7D2ISXKsqYs"-->
 <!DOCTYPE html>
   <html>
       <head>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJpKHvZqDFWpdAbK5ViY8u7D2ISXKsqYs" type="text/javascript"></script>
             <script type="text/javascript" src="maps.js"></script>
-            <!--other script and also external css included over here-->
+			<link rel="stylesheet" type="text/css" href="maps.css">
+			<!--other script and also external css included over here-->
       </head>
 
     <body onload="initialize()">
-        <table style="
-        width:100%">
+	 <h1>Search your destination</h1>
+      <div>
+        <input id="address" type="textbox" placeholder="Enter a new location">
+        <input type="button" value="Go" onclick="goTo()"> 
+      </div>
+	   <div class="center" id="floating-panel">
+			<input onclick="clearMarkers();" type=button value="Hide Markers">
+	   </div>
+	   <br>
+        <table style=" width:100%">
           <tr>
-            <th style="color:green;  font-size:150%;">City</th>
-            <th style="color:green;  font-size:150%;">MAP</th>
-          </tr>
-          <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('rosh%20tzurim')">Rosh Tzurim</a>
             </td>
             <td rowspan="16"  onload="initialize()">
-              <div id="myMap" style="width: 600px; height: 450px; border: 0; frameborder: 0;">MAP GOES HERE</div>
+              <div id="myMap">MAP GOES HERE</div>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Jerusalem')">Jerusalem</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Efrat')">Efrat</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('tel aviv', 'Tel Aviv')">Tel Aviv</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Haifa')">Haifa</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Katzerin')">Katzerin</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Beer Sheva')">Beer Sheva</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Sde Boker')">Sde Boker</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Tiberias')">Tiberias</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Paris')">Paris</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
-              href="#" onclick="MyFunction('London')">London</a>
+            <td><a title="Click to zoom in"
+              href="#" onclick="MyFunction('Milan')">Milan</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Dublin')">Dublin</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('Australia')">Australia</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a  title="Click to zoom in"
               href="#" onclick="MyFunction('New York')">New York</a>
             </td>
           </tr>
           <tr>
-            <td><a  title="Click to do something"
+            <td><a title="Click to zoom in"
               href="#" onclick="MyFunction('New delhi')">New Delhi</a>
             </td>
           </tr>
       </table>
-      <button onclick="setPoint()" style="color:green;  font-size:150%;" >Show all</button>
-      </body>
+	      <div>
+      <h3>Get Directions</h3>
+      <strong>Start: </strong>
+      <div>
+        <input id="start" type="text" size="50" placeholder="Enter locations">
+      </div>
+      <strong>End: </strong>
+      <div>
+        <input id="end" type="text" size="50" placeholder="Enter locations">
+      </div>
+	  <br>
+      <div>
+        <select id="travelMode" onchange="calcRoute()">
+          <option value="NONE">Choose Transportation Method</option>
+          <option value="DRIVING">Driving</option>
+          <option value="WALKING">Walking</option>
+        </select>
+      </div>
+      <!--<input type="button" value="Get Directions" onclick="calcRoute()">-->
+    </div>
+
+    </body>
   </html>
