@@ -3,121 +3,52 @@
   <html>
       <head>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJpKHvZqDFWpdAbK5ViY8u7D2ISXKsqYs" type="text/javascript"></script>
-            <script type="text/javascript" src="maps.js"></script>
+            <script type="text/javascript" src="data.js"></script>       
+		   <script type="text/javascript" src="maps.js"></script>
 			<link rel="stylesheet" type="text/css" href="maps.css">
 			<!--other script and also external css included over here-->
       </head>
 
     <body onload="initialize()">
-	 <h1>Search your destination</h1>
-      <div>
-        <input id="address" type="textbox" placeholder="Enter a new location">
-        <input type="button" value="Go" onclick="goTo()"> 
-      </div>
-	   <div class="center" id="floating-panel">
+		<h1>Search your destination</h1>
+			<div>
+				<input id="address" type="textbox" placeholder="Enter a new location">
+				<input type="button" value="Go" onclick="goTo()"> 
+			</div>
+		<fieldset>
+			<legend>Click to show location</legend>
+				<input type="radio" name="action1" id="Synagogue" value="track" onclick="markerSelect(id)"/><label for="track">Synagogue</label><br />
+				<input type="radio" name="action2" id="Kosher restaurant" value="event"  onclick="markerSelect(id)"/><label for="track">Kosher restaurant</label><br />
+				<input type="radio" name="action3" id="Mikveh" value="message" onclick="markerSelect(id)"/><label for="track">Mikveh</label><br />			
+				<input type="radio" name="action4" id="Chabad house" value="message" onclick="markerSelect(id)"/><label for="track">Chabad house</label><br />	
+				<input type="radio" name="action5" id="Jewish house" value="message" onclick="markerSelect(id)"/><label for="track">Jewish house</label><br />			
+				<input type="radio" name="action6" id="Show all" value="message" onclick="markerSelect(id)"/><label for="track">Show all</label><br />			
+		</fieldset>
+		<br>
+		<div id="map"></div>
+		<h1 id="myMap">MAP GOES HERE</h1>
+		<br>
+		<div id="floating-panel">
 			<input onclick="clearMarkers();" type=button value="Hide Markers">
-	   </div>
-	   <br>
-        <table style=" width:100%">
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('rosh%20tzurim')">Rosh Tzurim</a>
-            </td>
-            <td rowspan="16"  onload="initialize()">
-              <div id="myMap">MAP GOES HERE</div>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Jerusalem')">Jerusalem</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Efrat')">Efrat</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('tel aviv', 'Tel Aviv')">Tel Aviv</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Haifa')">Haifa</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Katzerin')">Katzerin</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Beer Sheva')">Beer Sheva</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Sde Boker')">Sde Boker</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Tiberias')">Tiberias</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Paris')">Paris</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a title="Click to zoom in"
-              href="#" onclick="MyFunction('Milan')">Milan</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Dublin')">Dublin</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('Australia')">Australia</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a  title="Click to zoom in"
-              href="#" onclick="MyFunction('New York')">New York</a>
-            </td>
-          </tr>
-          <tr>
-            <td><a title="Click to zoom in"
-              href="#" onclick="MyFunction('New delhi')">New Delhi</a>
-            </td>
-          </tr>
-      </table>
-	      <div>
-      <h3>Get Directions</h3>
-      <strong>Start: </strong>
-      <div>
-        <input id="start" type="text" size="50" placeholder="Enter locations">
-      </div>
-      <strong>End: </strong>
-      <div>
-        <input id="end" type="text" size="50" placeholder="Enter locations">
-      </div>
-	  <br>
-      <div>
-        <select id="travelMode" onchange="calcRoute()">
-          <option value="NONE">Choose Transportation Method</option>
-          <option value="DRIVING">Driving</option>
-          <option value="WALKING">Walking</option>
-        </select>
-      </div>
+		</div>
+		<h3>Get Directions</h3>
+		<strong>Start: </strong>
+		<div>
+			<input id="start" type="text" size="50" placeholder="Enter locations">
+		</div>
+		<strong>End: </strong>
+		<div>
+			<input id="end" type="text" size="50" placeholder="Enter locations">
+		</div>
+		<br>
+		<div>
+		<select id="travelMode" onchange="calcRoute()">
+			<option value="NONE">Choose Transportation Method</option>
+			<option value="DRIVING">Driving</option>
+			<option value="WALKING">Walking</option>
+		</select>
+		</div>
       <!--<input type="button" value="Get Directions" onclick="calcRoute()">-->
-    </div>
 
-    </body>
+	</body>
   </html>

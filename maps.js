@@ -1,95 +1,9 @@
 var geocoder;
 var map;
 var goTo_marker;
-
-/*
-*
-*
-data
-*
-*
-*/
-
-// Mikveh collection
-var jsonM = [{title : "ben david 15 Mikveh", 
-				Lat: 31.754133, Lng: 35.226074, 
-				desciption: "Mikveh  is a bath used for the purpose of ritual immersion in Judaism"}, 
-				{title : "Strauss 26 Mikveh",
-				Lat: 31.786688,  Lng: 35.218852, 
-				desciption: "Mikveh  is a bath used for the purpose of ritual immersion in Judaism"},
-				{title : "David Ben 15 Mikveh",
-				Lat: 31.776762, Lng: 35.229683,
-				desciption: "Mikveh  is a bath used for the purpose of ritual immersion in Judaism"},
-				{title : "Kiryat Yovel Florentin Mikveh",
-				Lat: 31.760301, Lng: 35.176763,
-				desciption: "Mikveh  is a bath used for the purpose of ritual immersion in Judaism"},
-				{title : "Elisha 10 Jerusalem Mikveh",
-				Lat: 31.780956, Lng: 35.225784, 
-				desciption: "Mikveh  is a bath used for the purpose of ritual immersion in Judaism"}];
-				
-// beyt cneset collection	
-var jsonB = [{title : "Synagogue love of Zion and Jerusalem", 
-				Lat: 31.814551, Lng: 35.205378, 
-				desciption: "A synagogue is a Jewish house of prayer"}, 
-				{title : "Synagogue in Bnei Zion Horb",
-				Lat: 31.776377,  Lng: 35.215192, 
-				desciption: "A synagogue is a Jewish house of prayer"},
-				{title : "Father David Synagogue",
-				Lat: 31.781308, Lng: 35.211178,
-				desciption: "A synagogue is a Jewish house of prayer"},
-				{title : "Synagogue Youth Paras",
-				Lat: 31.784827, Lng: 35.210663,
-				desciption: "A synagogue is a Jewish house of prayer"},
-				{title : "Synagogue lion mizpe",
-				Lat: 31.811952, Lng: 35.194305, 
-				desciption: "A synagogue is a Jewish house of prayer"}];
-
-// resteraunt collection				
-var jsonR = [{title : "Pini's kitchen", 
-				Lat: 31.764567, Lng: 35.220505, 
-				desciption: "One of the best Kosher resteraunts"}, 
-				{title : "Jacques Street",
-				Lat: 31.784864,  Lng: 35.211679, 
-				desciption: "One of the best Kosher resteraunts"},
-				{title : "Trattoria Chabba",
-				Lat: 31.785752, Lng: 35.212528,
-				desciption: "One of the best Kosher resteraunts"},
-				{title : "eucalyptus",
-				Lat: 31.773662, Lng: 35.226803,
-				desciption:"One of the best Kosher resteraunts"},
-				{title : "Hamotzi",
-				Lat: 31.783682, Lng:35.215744, 
-				desciption: "One of the best Kosher resteraunts"}];
-var jerusalem = {Mikveh: jsonM, synagogue: jsonB, resteraunt: jsonR}; //all the info of Jerusalem
-var pointMarkerImage = new Array();//store image of marker in array
-var pointMarker = new Array();//store marker in array
-
-       pointMarkerImage[0]= new google.maps.MarkerImage('image/star.png', null, null, null, new google.maps.Size(42, 42)); // star of david
-       pointMarkerImage[1]=  new google.maps.MarkerImage('image/drop1.png',null, null, null, new google.maps.Size(42, 42)); // drop of water
-       pointMarkerImage[2]=  new google.maps.MarkerImage('image/flag.png', null, null, null, new google.maps.Size(60, 42)); // habad logo
-	   pointMarkerImage[3]=  new google.maps.MarkerImage('image/kosher.png', null, null, null, new google.maps.Size(60, 42)); // kosher logo
-
-	   var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-      'sandstone rock formation in the southern part of the '+
-      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-      'Aboriginal people of the area. It has many springs, waterholes, '+
-      'rock caves and ancient paintings. Uluru is listed as a World '+
-      'Heritage Site.</p>'+
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-      '(last visited June 22, 2009).</p>'+
-      '</div>'+
-      '</div>';
-	  
+var pointMarker;
+var address;	  
+var marCount;
 /*
 *
 *
@@ -97,58 +11,112 @@ functions
 *
 *
 */
-       //create number of markers based on collection.length
-function setPoint(destination){
-	var infowindow = new google.maps.InfoWindow({
-		content: contentString
-	});
-	
-	for(var i=0; i<jerusalem.Mikveh.length; i++){ // adding the Mikveh markers
-		pointMarker[i] = new google.maps.Marker({
-            position: new google.maps.LatLng(jerusalem.Mikveh[i].Lat, jerusalem.Mikveh[i].Lng),
+       //create number of markers based on the radio selection
+function setMikvehPoint(dest){// adding the Mikveh markers
+
+	for(var i=0; i<city[dest].Mikveh.length; i++){ 
+		pointMarker[marCount] = new google.maps.Marker({
+			position: new google.maps.LatLng(city[dest].Mikveh[i].Lat, city[dest].Mikveh[i].Lng),
             map: map,
             icon: pointMarkerImage[1],
             animation: google.maps.Animation.DROP,
-            title: jerusalem.Mikveh[i].title,
+            title: city[dest].Mikveh[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 
 		});
-		pointMarker[i].addListener('click', function() {
-		infowindow.open(map, pointMarker[i]);
+
+		var infowindow = new google.maps.InfoWindow({
+			content: city[dest].Mikveh[i].desciption
 		});
+		pointMarker[marCount].addListener('click', function() {
+		infowindow.open(map, pointMarker[marCount]);
+		});
+		marCount++;
 	}
-    for(var i=0; i<jerusalem.synagogue.length; i++){// adding the sinagogs markers
-		pointMarker[i+jerusalem.Mikveh.length] = new google.maps.Marker({
-            position: new google.maps.LatLng(jerusalem.synagogue[i].Lat, jerusalem.synagogue[i].Lng),
+}
+function setSynagoguePoint(dest){// adding the Synagogue markers
+    for(var i=0; i<city[dest].synagogue.length; i++){
+		pointMarker[marCount] = new google.maps.Marker({
+            position: new google.maps.LatLng(city[dest].synagogue[i].Lat, city[dest].synagogue[i].Lng),
             map: map,
             icon: pointMarkerImage[0],
             animation: google.maps.Animation.DROP,
-            title: jerusalem.synagogue[i].title,
+            title: city[dest].synagogue[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 	
 		});
-		pointMarker[i+jerusalem.Mikveh.length].addListener('click', function() {
-		infowindow.open(map, pointMarker[i]);
+		var infowindow = new google.maps.InfoWindow({
+			content: city[dest].synagogue[i].desciption
 		});
-		
+		pointMarker[marCount].addListener('click', function() {
+		infowindow.open(map, pointMarker[marCount]);
+		});
+		marCount++;
 	}
-	var x =jerusalem.Mikveh.length+jerusalem.synagogue.length;
-    for(var i=0 ; i<jerusalem.resteraunt.length; i++){ // adding the restaraunt markers
-		pointMarker[i+x] = new google.maps.Marker({
-            position: new google.maps.LatLng(jerusalem.resteraunt[i].Lat, jerusalem.resteraunt[i].Lng),
+}
+function setRestaurantPoint(dest){// adding the restaurant markers
+    for(var i=0 ; i<city[dest].resteraunt.length; i++){ 
+		pointMarker[marCount] = new google.maps.Marker({
+            position: new google.maps.LatLng(city[dest].resteraunt[i].Lat, city[dest].resteraunt[i].Lng),
             map: map,
             icon: pointMarkerImage[3],
             animation: google.maps.Animation.DROP,
-            title: jerusalem.resteraunt[i].title,
+            title: city[dest].resteraunt[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 	
 		});
-		pointMarker[i+x].addListener('click', function() {
-		infowindow.open(map, pointMarker[i]);
+		var infowindow = new google.maps.InfoWindow({
+			content: city[dest].resteraunt[i].desciption
 		});
+		pointMarker[marCount].addListener('click', function() {
+		infowindow.open(map, pointMarker[marCount]);
+		});
+		marCount++;
+	}
+}
+function setChabadPoint(dest){// adding the chabad house markers
+	for(var i=0 ; i<city[dest].chabad.length; i++){ 
+		pointMarker[marCount] = new google.maps.Marker({
+            position: new google.maps.LatLng(city[dest].chabad[i].Lat, city[dest].chabad[i].Lng),
+            map: map,
+            icon: pointMarkerImage[2],
+            animation: google.maps.Animation.DROP,
+            title: city[dest].chabad[i].title,
+			size: new google.maps.Size(42, 68),
+			visible: true,
+			zIndex: i 	
+		});
+		var infowindow = new google.maps.InfoWindow({
+			content: city[dest].chabad[i].desciption
+		});
+		pointMarker[marCount].addListener('click', function() {
+		infowindow.open(map, pointMarker[marCount]);
+		});
+		marCount++;
+	}
+}
+function setJewishPoint(dest){// adding the jewish house markers
+	for(var i=0 ; i<city[dest].Jewish.length; i++){ 
+		pointMarker[marCount] = new google.maps.Marker({
+            position: new google.maps.LatLng(city[dest].Jewish[i].Lat, city[dest].Jewish[i].Lng),
+            map: map,
+            icon: pointMarkerImage[4],
+            animation: google.maps.Animation.DROP,
+            title: city[dest].Jewish[i].title,
+			size: new google.maps.Size(42, 68),
+			visible: true,
+			zIndex: i 	
+		});
+		var infowindow = new google.maps.InfoWindow({
+			content: city[dest].Jewish[i].desciption
+		});
+		pointMarker[marCount].addListener('click', function() {
+		infowindow.open(map, pointMarker[marCount]);
+		});
+		marCount++;
 	}
 }
 
@@ -159,7 +127,7 @@ function clearMarkers() {
 }
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
-  for (var i = 0; i < pointMarker.length; i++) {
+  for (var i = 0; i < marCount; i++) {
     if(pointMarker[i]!=null){
         pointMarker[i].setMap(map);
     }
@@ -213,31 +181,47 @@ function MyFunction(address) {// zoom in the map to the address
     }
   });
   if(address=='Jerusalem'){
-      setPoint()
+      setPoint(address)
    }
 }
 
 //reads a location from the "adress" input field, centers the map on it and adds a marker
 function goTo() {
-  var address = document.getElementById('address').value;
+  marCount = 0;
+  address = document.getElementById('address').value;
+ 
   geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps
-      .Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-	  map.setZoom(12);
-      if(goTo_marker!=null){
-        goTo_marker.setMap(null);
-      }
-      goTo_marker=marker;
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
+    if (status == 'OK'){
+     	map.setCenter(results[0].geometry.location);
+		map.setZoom(12);
+	}
   });
-  
+ }
+ function markerSelect(id){
+	if(city[address]){// check if we have info about this city
+		if(id == 'Synagogue'){
+			setSynagoguePoint(address);// if we have we display all the Synagogue markers
+		}
+		if(id == 'Kosher restaurant'){
+			setRestaurantPoint(address);// if we have we display all the Kosher restaurant markers
+		}
+		if(id == 'Mikveh'){
+			setMikvehPoint(address);// if we have we display all the Mikveh markers
+		}
+		if(id == 'Chabad house'){
+			setChabadPoint(address);// if we have we display all the Chabad house markers
+		}
+		if(id == 'Jewish house'){
+			setJewishPoint(address);// if we have we display all the Jewish house markers
+		}
+		if(id == 'Show all'){// if we have we display all the markers	
+			setSynagoguePoint(address);
+			setRestaurantPoint(address);
+			setMikvehPoint(address);		
+			setChabadPoint(address);	
+			setJewishPoint(address);
+		}
+	}
 }
 /*
 *
