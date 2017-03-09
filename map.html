@@ -10,45 +10,50 @@
       </head>
 
     <body onload="initialize()">
-		<h1>Search your destination</h1>
-			<div>
-				<input id="address" type="textbox" placeholder="Enter a new location">
-				<input type="button" value="Go" onclick="goTo()"> 
+		<table style="width:100%">
+			  <tr>
+				<div> 
+					<h1>Search your destination</h1>
+				
+				</div>
+				<div>
+					<input id="address" type="textbox" placeholder="Enter a new location">
+					<input type="button" value="Go" onclick="goTo()"> 
+				</div>
+			<fieldset>
+				<legend>Click to show location</legend>
+					<input type="checkbox" name="action" id="Synagogue" onclick="markerSelect(id)"/><label for="track">Synagogue</label><br />
+					<input type="checkbox" name="action" id="Kosher restaurant" onclick="markerSelect(id)"/><label for="track">Kosher restaurant</label><br />
+					<input type="checkbox" name="action" id="Mikveh" onclick="markerSelect(id)"/><label for="track">Mikveh</label><br />			
+					<input type="checkbox" name="action" id="Chabad house" onclick="markerSelect(id)"/><label for="track">Chabad house</label><br />	
+					<input type="checkbox" name="action" id="Jewish house" onclick="markerSelect(id)"/><label for="track">Jewish house</label><br />			
+					<input type="checkbox" name="action" id="Show all" onclick="markerSelect(id)"/><label for="track">Show all</label><br />			
+			</fieldset>
+			<br>
+			<div id="map"></div>
+			<h1 id="myMap">MAP GOES HERE</h1>
+			<br>
+			<div id="floating-panel">
+				<input onclick="clearMarkers();" type=button value="Hide Markers">
 			</div>
-		<fieldset>
-			<legend>Click to show location</legend>
-				<input type="radio" name="action1" id="Synagogue" value="track" onclick="markerSelect(id)"/><label for="track">Synagogue</label><br />
-				<input type="radio" name="action2" id="Kosher restaurant" value="event"  onclick="markerSelect(id)"/><label for="track">Kosher restaurant</label><br />
-				<input type="radio" name="action3" id="Mikveh" value="message" onclick="markerSelect(id)"/><label for="track">Mikveh</label><br />			
-				<input type="radio" name="action4" id="Chabad house" value="message" onclick="markerSelect(id)"/><label for="track">Chabad house</label><br />	
-				<input type="radio" name="action5" id="Jewish house" value="message" onclick="markerSelect(id)"/><label for="track">Jewish house</label><br />			
-				<input type="radio" name="action6" id="Show all" value="message" onclick="markerSelect(id)"/><label for="track">Show all</label><br />			
-		</fieldset>
-		<br>
-		<div id="map"></div>
-		<h1 id="myMap">MAP GOES HERE</h1>
-		<br>
-		<div id="floating-panel">
-			<input onclick="clearMarkers();" type=button value="Hide Markers">
-		</div>
-		<h3>Get Directions</h3>
-		<strong>Start: </strong>
-		<div>
-			<input id="start" type="text" size="50" placeholder="Enter locations">
-		</div>
-		<strong>End: </strong>
-		<div>
-			<input id="end" type="text" size="50" placeholder="Enter locations">
-		</div>
-		<br>
-		<div>
-		<select id="travelMode" onchange="calcRoute()">
-			<option value="NONE">Choose Transportation Method</option>
-			<option value="DRIVING">Driving</option>
-			<option value="WALKING">Walking</option>
-		</select>
-		</div>
-      <!--<input type="button" value="Get Directions" onclick="calcRoute()">-->
-
+			<h3>Get Directions</h3>
+			<strong>Start: </strong>
+			<div>
+				<input id="start" type="text" size="50" placeholder="Enter locations">
+			</div>
+			<strong>End: </strong>
+			<div>
+				<input id="end" type="text" size="50" placeholder="Enter locations">
+			</div>
+			<br>
+			<div>
+			<select id="travelMode" onchange="calcRoute()">
+				<option value="NONE">Choose Transportation Method</option>
+				<option value="DRIVING">Driving</option>
+				<option value="WALKING">Walking</option>
+			</select>
+			</div>
+		  <!--<input type="button" value="Get Directions" onclick="calcRoute()">-->
+		</tr>
 	</body>
   </html>
