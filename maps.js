@@ -17,6 +17,23 @@ pointMarkerImage[1]= new google.maps.MarkerImage('image/drop1.png',null, null, n
 pointMarkerImage[2]= new google.maps.MarkerImage('image/flag.png', null, null, null, new google.maps.Size(50, 42)); // habad logo
 pointMarkerImage[3]= new google.maps.MarkerImage('image/kosher.png', null, null, null, new google.maps.Size(60, 42)); // kosher logo
 pointMarkerImage[4]= new google.maps.MarkerImage('image/house.png', null, null, null, new google.maps.Size(50, 42)); // jewish house logo
+/*
+*
+getting the json data
+*
+*/
+
+ var getData = function(href) {
+    var l = document.createElement("a");
+    l.href = href;
+    return l;
+};
+var l = getData("https://raw.githubusercontent.com/itayariel/yehudinonded/master/data.json");
+console.debug(l.hostname)
+>> "example.com"
+console.debug(l.pathname)
+>> "/path"
+var contact = JSON.parse(l);
 
 /*
 *
@@ -28,20 +45,20 @@ functions
        //create number of markers based on the radio selection
 function setMikvehPoint(dest){// adding the Mikveh markers
 
-	for(var i=0; i<city[dest].Mikveh.length; i++){ 
+	for(var i=0; i<l.city[dest].Mikveh.length; i++){ 
 		pointMarker[marCount] = new google.maps.Marker({
-			position: new google.maps.LatLng(city[dest].Mikveh[i].Lat, city[dest].Mikveh[i].Lng),
+			position: new google.maps.LatLng(l.city[dest].Mikveh[i].Lat, l.city[dest].Mikveh[i].Lng),
             map: map,
             icon: pointMarkerImage[1],
             animation: google.maps.Animation.DROP,
-            title: city[dest].Mikveh[i].title,
+            title: l.city[dest].Mikveh[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 
 		});
 
 		var infowindow = new google.maps.InfoWindow({
-			content: city[dest].Mikveh[i].desciption
+			content: data.city[dest].Mikveh[i].desciption
 		});
 		pointMarker[marCount].addListener('click', function() {
 		infowindow.open(map, pointMarker[marCount]);
@@ -212,7 +229,7 @@ function goTo() {
   });
  }
  function markerSelect(id){
-	if(city[address]){// check if we have info about this city
+	if(l[address]){// check if we have info about this city
 		if(id == 'Synagogue'){
 			setSynagoguePoint(address);// if we have we display all the Synagogue markers
 		}
