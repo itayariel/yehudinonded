@@ -1,6 +1,6 @@
 {
-	"city": [{
-		"jerusalem": {
+	"jerusalem": {
+		{"Mikveh": 
 			[{
 				"title": "ben david 15 Mikveh",
 				"Lat": 31.754133,
@@ -26,9 +26,9 @@
 				"Lat": 31.780956,
 				"Lng": 35.225784,
 				"desciption": 'Mikveh  is a bath used for the purpose of ritual immersion in Judaism5'
-			}];
-		},
-		{
+			};
+		]},
+		{"Synagogue":
 			[{
 				"title": 'Synagogue love of Zion and Jerusalem',
 				"Lat": 31.814551,
@@ -56,7 +56,7 @@
 				"desciption": 'A synagogue is a Jewish house of prayer'
 			}];
 		},
-		{
+		"Resteraunts";{
 			[{
 				"title": "Pini's kitchen",
 				"Lat": 31.764567,
@@ -84,7 +84,7 @@
 				"desciption": 'One of the best Kosher resteraunts'
 			}];
 		},
-		{
+		"Chabad":{
 			[{
 				"title": "Chabad of israel",
 				"Lat": 31.774816,
@@ -97,7 +97,7 @@
 				"desciption": 'One of the best Kosher resteraunts'
 			}];
 		},
-		{
+		"Jewish":{
 			[{
 				"title": "The Jewish house",
 				"Lat": 31.775950,
@@ -105,5 +105,5 @@
 				"desciption": 'One of the best Kosher resteraunts'
 			}];
 		},
-	}]
+	}
 }

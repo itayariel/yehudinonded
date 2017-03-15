@@ -28,7 +28,7 @@ getting the json data
 $( document ).ready(function() {
   $.ajax({url: "https://raw.githubusercontent.com/itayariel/yehudinonded/master/data.json", success: function(result){
         $("#city").html(typeof(result));
-		city = JSON.parse(result);
+		city = JSON.parse(JSON.stringify(result));
   }});
 });
 /*
@@ -212,7 +212,7 @@ function MyFunction(address) {// zoom in the map to the address
       setPoint(address)
    }
 }
-var city;
+
 //reads a location from the "adress" input field, centers the map on it and adds a marker
 function goTo() {
   marCount = 0;
@@ -226,7 +226,9 @@ function goTo() {
   });
  }
  function markerSelect(id){
+ console.log(address);
 	if(city[address]){// check if we have info about this city
+		console.log(address);
 		if(id == 'Synagogue'){
 			setSynagoguePoint(address);// if we have we display all the Synagogue markers
 		}
