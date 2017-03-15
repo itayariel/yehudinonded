@@ -65,19 +65,6 @@ var jsonH = [{title : "The Jewish house",
 var jerusalem = {Mikveh: jsonM, synagogue: jsonB, resteraunt: jsonR, chabad: jsonC, Jewish: jsonH}; //all the info of Jerusalem
 var milan;
 var city = {jerusalem: jerusalem, milan: milan}// all the citys info
-/*
-*
-markers data
-*
-*/
-var pointMarkerImage = new Array();//store image of marker in array
-var pointMarker = new Array();//store marker in array
-
-pointMarkerImage[0]= new google.maps.MarkerImage('image/star.png', null, null, null, new google.maps.Size(42, 42)); // star of david
-pointMarkerImage[1]= new google.maps.MarkerImage('image/drop1.png',null, null, null, new google.maps.Size(42, 42)); // drop of water
-pointMarkerImage[2]= new google.maps.MarkerImage('image/flag.png', null, null, null, new google.maps.Size(50, 42)); // habad logo
-pointMarkerImage[3]= new google.maps.MarkerImage('image/kosher.png', null, null, null, new google.maps.Size(60, 42)); // kosher logo
-pointMarkerImage[4]= new google.maps.MarkerImage('image/house.png', null, null, null, new google.maps.Size(50, 42)); // jewish house logo
 
 	   var contentString = '<div id="content">'+
       '<div id="siteNotice">'+

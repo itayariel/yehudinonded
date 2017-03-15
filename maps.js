@@ -4,6 +4,8 @@ var goTo_marker;
 var pointMarker;
 var address;	  
 var marCount;
+var infowindow;
+var city;
 /*
 *
 markers data
@@ -11,6 +13,7 @@ markers data
 */
 var pointMarkerImage = new Array();//store image of marker in array
 var pointMarker = new Array();//store marker in array
+var infowindow = new Array();//store infowindow in array
 
 pointMarkerImage[0]= new google.maps.MarkerImage('image/star.png', null, null, null, new google.maps.Size(42, 42)); // star of david
 pointMarkerImage[1]= new google.maps.MarkerImage('image/drop1.png',null, null, null, new google.maps.Size(42, 42)); // drop of water
@@ -22,19 +25,12 @@ pointMarkerImage[4]= new google.maps.MarkerImage('image/house.png', null, null, 
 getting the json data
 *
 */
-
- var getData = function(href) {
-    var l = document.createElement("a");
-    l.href = href;
-    return l;
-};
-var l = getData("https://raw.githubusercontent.com/itayariel/yehudinonded/master/data.json");
-console.debug(l.hostname)
->> "example.com"
-console.debug(l.pathname)
->> "/path"
-var contact = JSON.parse(l);
-
+$( document ).ready(function() {
+  $.ajax({url: "https://raw.githubusercontent.com/itayariel/yehudinonded/master/data.json", success: function(result){
+        $("#city").html(typeof(result));
+		city = JSON.parse(result);
+  }});
+});
 /*
 *
 *
@@ -45,23 +41,24 @@ functions
        //create number of markers based on the radio selection
 function setMikvehPoint(dest){// adding the Mikveh markers
 
-	for(var i=0; i<l.city[dest].Mikveh.length; i++){ 
+	for(var i=0; i<city[dest].Mikveh.length; i++){ 
 		pointMarker[marCount] = new google.maps.Marker({
-			position: new google.maps.LatLng(l.city[dest].Mikveh[i].Lat, l.city[dest].Mikveh[i].Lng),
+			position: new google.maps.LatLng(city[dest].Mikveh[i].Lat, city[dest].Mikveh[i].Lng),
             map: map,
             icon: pointMarkerImage[1],
             animation: google.maps.Animation.DROP,
-            title: l.city[dest].Mikveh[i].title,
+            title: city[dest].Mikveh[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 
 		});
 
-		var infowindow = new google.maps.InfoWindow({
-			content: data.city[dest].Mikveh[i].desciption
+		infowindow[marCount] = new google.maps.InfoWindow({
+			content: city[dest].Mikveh[i].desciption
 		});
 		pointMarker[marCount].addListener('click', function() {
-		infowindow.open(map, pointMarker[marCount]);
+		//infowindow.setContent(this.html);
+		infowindow[marCount].open(map, pointMarker[marCount]);
 		});
 		marCount++;
 	}
@@ -215,7 +212,7 @@ function MyFunction(address) {// zoom in the map to the address
       setPoint(address)
    }
 }
-
+var city;
 //reads a location from the "adress" input field, centers the map on it and adds a marker
 function goTo() {
   marCount = 0;
@@ -229,7 +226,7 @@ function goTo() {
   });
  }
  function markerSelect(id){
-	if(l[address]){// check if we have info about this city
+	if(city[address]){// check if we have info about this city
 		if(id == 'Synagogue'){
 			setSynagoguePoint(address);// if we have we display all the Synagogue markers
 		}

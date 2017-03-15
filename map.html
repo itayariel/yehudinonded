@@ -3,6 +3,7 @@
   <html>
       <head>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJpKHvZqDFWpdAbK5ViY8u7D2ISXKsqYs" type="text/javascript"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 			<script type="text/javascript" src="maps.js"></script>
 			<link rel="stylesheet" type="text/css" href="maps.css">
 			<!--other script and also external css included over here-->
@@ -19,6 +20,7 @@
 					<input id="address" type="textbox" placeholder="Enter a new location">
 					<input type="button" value="Go" onclick="goTo()"> 
 				</div>
+				<div id="city"></div>
 			<fieldset>
 				<legend>Click to show location</legend>
 					<input type="checkbox" name="action" id="Synagogue" onclick="markerSelect(id)"/><label for="track">Synagogue</label><br />
