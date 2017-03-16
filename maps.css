@@ -1,7 +1,3 @@
-table{
-	width:100%;
-	position: relative;
-}
 body {
      background-image: url("image/greenn.jpg");
 	 background-size: 1400px 1200px;
@@ -9,7 +5,9 @@ body {
 	 color: green;
 	 font-weight: bold;
 } 
-
+table{
+	width:100%;
+}
 #myMap{
    position:fixed;
 	margin: 0;
