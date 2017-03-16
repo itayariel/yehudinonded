@@ -2,6 +2,7 @@
 <!DOCTYPE html>
   <html>
       <head>
+			<title> The Jewish traveler </title>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJpKHvZqDFWpdAbK5ViY8u7D2ISXKsqYs" type="text/javascript"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 			<script type="text/javascript" src="maps.js"></script>
@@ -10,51 +11,74 @@
       </head>
 
     <body onload="initialize()">
-		<table style="width:100%">
-			  <tr>
+		<table>
+			<tr>
 				<div> 
-					<h1>Search your destination</h1>
-				
+					<td colspan = "2"><h1>Search your destination</h1></td>
 				</div>
-				<div>
+			
+			</tr>
+			<tr>
+				<td colspan = "2"><div>
 					<input id="address" type="textbox" placeholder="Enter a new location">
-					<input type="button" value="Go" onclick="goTo()"> 
+					<input type="button" value="Go" onclick="goTo()"> </td>
 				</div>
-				<div id="city"></div>
-			<fieldset>
-				<legend>Click to show location</legend>
-					<input type="checkbox" name="action" id="Synagogue" onclick="markerSelect(id)"/><label for="track">Synagogue</label><br />
-					<input type="checkbox" name="action" id="Kosher restaurant" onclick="markerSelect(id)"/><label for="track">Kosher restaurant</label><br />
-					<input type="checkbox" name="action" id="Mikveh" onclick="markerSelect(id)"/><label for="track">Mikveh</label><br />			
-					<input type="checkbox" name="action" id="Chabad house" onclick="markerSelect(id)"/><label for="track">Chabad house</label><br />	
-					<input type="checkbox" name="action" id="Jewish house" onclick="markerSelect(id)"/><label for="track">Jewish house</label><br />			
-					<input type="checkbox" name="action" id="Show all" onclick="markerSelect(id)"/><label for="track">Show all</label><br />			
-			</fieldset>
+			</tr>
+			<tr>
+				<td colspan = "2"><fieldset>
+					<legend>Click to show location</legend>
+						<input type="checkbox" name="action" id="Synagogue" onclick="markerSelect(id)"/><label for="track">Synagogue</label><br />
+						<input type="checkbox" name="action" id="Kosher restaurant" onclick="markerSelect(id)"/><label for="track">Kosher restaurant</label><br />
+						<input type="checkbox" name="action" id="Mikveh" onclick="markerSelect(id)"/><label for="track">Mikveh</label><br />			
+						<input type="checkbox" name="action" id="Chabad house" onclick="markerSelect(id)"/><label for="track">Chabad house</label><br />	
+						<input type="checkbox" name="action" id="Jewish house" onclick="markerSelect(id)"/><label for="track">Jewish house</label><br />			
+						<input type="checkbox" name="action" id="Show all" onclick="markerSelect(id)"/><label for="track">Show all</label><br />			
+				</fieldset></td>
+				<br>
+			</tr>
+			<tr>
+				<td> <br> </td>
+			</tr>
+			<tr>
+				<td><div id="floating-panel">
+					<input onclick="clearMarkers();" type=button value="Hide Markers">
+				</div></td>
+				<td rowspan = "12"><div id="map"></div>
+				<h1 id="myMap">MAP GOES HERE</h1></td>
+			</tr>
+			<tr>
+				<td><h3>Get Directions</h3></td>
+			</tr>
+			<tr>
+				<td><strong>Start: </strong></td>
+			</tr>
+			<tr>
+				<div>
+					<td><input id="start" type="text" size="50" placeholder="Enter locations"></td>
+				</div>
+			</tr>
+			<tr>
+				<td><strong>End: </strong></td>
+			</tr>
+			<tr>
+				<div>
+					<td><input id="end" type="text" size="50" placeholder="Enter locations"></td>
+				</div>
+			</tr>
 			<br>
-			<div id="map"></div>
-			<h1 id="myMap">MAP GOES HERE</h1>
-			<br>
-			<div id="floating-panel">
-				<input onclick="clearMarkers();" type=button value="Hide Markers">
-			</div>
-			<h3>Get Directions</h3>
-			<strong>Start: </strong>
-			<div>
-				<input id="start" type="text" size="50" placeholder="Enter locations">
-			</div>
-			<strong>End: </strong>
-			<div>
-				<input id="end" type="text" size="50" placeholder="Enter locations">
-			</div>
-			<br>
-			<div>
-			<select id="travelMode" onchange="calcRoute()">
-				<option value="NONE">Choose Transportation Method</option>
-				<option value="DRIVING">Driving</option>
-				<option value="WALKING">Walking</option>
-			</select>
-			</div>
+			<tr>
+				<div>
+				<td><select id="travelMode" onchange="calcRoute()">
+					<option value="NONE">Choose Transportation Method</option>
+					<option value="DRIVING">Driving</option>
+					<option value="WALKING">Walking</option>
+				</select></td>
+				</div>
+			</tr>
+			<tr>
+				<td rowspan= "5"> </td>
+			</tr>
 		  <!--<input type="button" value="Get Directions" onclick="calcRoute()">-->
-		</tr>
-	</body>
-  </html>
+	</table>
+</body>
+</html>

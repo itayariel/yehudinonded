@@ -1,3 +1,7 @@
+table{
+	width:100%;
+	position: relative;
+}
 body {
      background-image: url("image/greenn.jpg");
 	 background-size: 1400px 1200px;
@@ -42,7 +46,7 @@ label{
 	font-size: 120%;
 }
 input[type=textbox]{
-    width: 15%;
+    width: 	17%;
     padding: 5px 10px;
     margin: 8px 0;
     box-sizing: content-box;
@@ -50,7 +54,7 @@ input[type=textbox]{
 }
 
 input[type="text"]{
-    width: 15%;
+    width: 50%;
     padding: 5px 10px;
     margin: 8px 0;
     box-sizing: content-box;

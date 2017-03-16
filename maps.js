@@ -28,8 +28,8 @@ getting the json data
 $( document ).ready(function() {
   $.ajax({url: "https://raw.githubusercontent.com/itayariel/yehudinonded/master/data.json", success: function(result){
         $("#city").html(typeof(result));
-		city = JSON.parse(JSON.stringify(result));
-  }});
+		city = JSON.parse(result);
+	}});
 });
 /*
 *
@@ -40,21 +40,20 @@ functions
 */
        //create number of markers based on the radio selection
 function setMikvehPoint(dest){// adding the Mikveh markers
-
-	for(var i=0; i<city[dest].Mikveh.length; i++){ 
+	for(var i=0; i<city[dest].mikvaot.length; i++){ 
 		pointMarker[marCount] = new google.maps.Marker({
-			position: new google.maps.LatLng(city[dest].Mikveh[i].Lat, city[dest].Mikveh[i].Lng),
+			position: new google.maps.LatLng(city[dest].mikvaot[i].Lat, city[dest].mikvaot[i].Lng),
             map: map,
             icon: pointMarkerImage[1],
             animation: google.maps.Animation.DROP,
-            title: city[dest].Mikveh[i].title,
+            title: city[dest].mikvaot[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 
 		});
 
 		infowindow[marCount] = new google.maps.InfoWindow({
-			content: city[dest].Mikveh[i].desciption
+			content: city[dest].mikvaot[i].desciption
 		});
 		pointMarker[marCount].addListener('click', function() {
 		//infowindow.setContent(this.html);
@@ -64,19 +63,19 @@ function setMikvehPoint(dest){// adding the Mikveh markers
 	}
 }
 function setSynagoguePoint(dest){// adding the Synagogue markers
-    for(var i=0; i<city[dest].synagogue.length; i++){
+    for(var i=0; i<city[dest].Synagogues.length; i++){
 		pointMarker[marCount] = new google.maps.Marker({
-            position: new google.maps.LatLng(city[dest].synagogue[i].Lat, city[dest].synagogue[i].Lng),
+            position: new google.maps.LatLng(city[dest].Synagogues[i].Lat, city[dest].Synagogues[i].Lng),
             map: map,
             icon: pointMarkerImage[0],
             animation: google.maps.Animation.DROP,
-            title: city[dest].synagogue[i].title,
+            title: city[dest].Synagogues[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 	
 		});
 		var infowindow = new google.maps.InfoWindow({
-			content: city[dest].synagogue[i].desciption
+			content: city[dest].Synagogues[i].desciption
 		});
 		pointMarker[marCount].addListener('click', function() {
 		infowindow.open(map, pointMarker[marCount]);
@@ -85,19 +84,19 @@ function setSynagoguePoint(dest){// adding the Synagogue markers
 	}
 }
 function setRestaurantPoint(dest){// adding the restaurant markers
-    for(var i=0 ; i<city[dest].resteraunt.length; i++){ 
+    for(var i=0 ; i<city[dest].resteraunts.length; i++){ 
 		pointMarker[marCount] = new google.maps.Marker({
-            position: new google.maps.LatLng(city[dest].resteraunt[i].Lat, city[dest].resteraunt[i].Lng),
+            position: new google.maps.LatLng(city[dest].resteraunts[i].Lat, city[dest].resteraunts[i].Lng),
             map: map,
             icon: pointMarkerImage[3],
             animation: google.maps.Animation.DROP,
-            title: city[dest].resteraunt[i].title,
+            title:city[dest].resteraunts[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 	
 		});
 		var infowindow = new google.maps.InfoWindow({
-			content: city[dest].resteraunt[i].desciption
+			content: city[dest].resteraunts[i].desciption
 		});
 		pointMarker[marCount].addListener('click', function() {
 		infowindow.open(map, pointMarker[marCount]);
@@ -127,19 +126,19 @@ function setChabadPoint(dest){// adding the chabad house markers
 	}
 }
 function setJewishPoint(dest){// adding the jewish house markers
-	for(var i=0 ; i<city[dest].Jewish.length; i++){ 
+	for(var i=0 ; i<city[dest].houses.length; i++){ 
 		pointMarker[marCount] = new google.maps.Marker({
-            position: new google.maps.LatLng(city[dest].Jewish[i].Lat, city[dest].Jewish[i].Lng),
+            position: new google.maps.LatLng(city[dest].houses[i].Lat, city[dest].houses[i].Lng),
             map: map,
             icon: pointMarkerImage[4],
             animation: google.maps.Animation.DROP,
-            title: city[dest].Jewish[i].title,
+            title: city[dest].houses[i].title,
 			size: new google.maps.Size(42, 68),
 			visible: true,
 			zIndex: i 	
 		});
 		var infowindow = new google.maps.InfoWindow({
-			content: city[dest].Jewish[i].desciption
+			content: city[dest].houses[i].desciption
 		});
 		pointMarker[marCount].addListener('click', function() {
 		infowindow.open(map, pointMarker[marCount]);
@@ -226,9 +225,7 @@ function goTo() {
   });
  }
  function markerSelect(id){
- console.log(address);
 	if(city[address]){// check if we have info about this city
-		console.log(address);
 		if(id == 'Synagogue'){
 			setSynagoguePoint(address);// if we have we display all the Synagogue markers
 		}
