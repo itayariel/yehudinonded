@@ -5,18 +5,16 @@
 			<title> The Jewish traveler </title>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJpKHvZqDFWpdAbK5ViY8u7D2ISXKsqYs" type="text/javascript"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="https://code.jquery.com/jquery-1.12.0.min.js" integrity="sha256-Xxq2X+KtazgaGuA2cWR1v3jJsuMJUozyIXDB3e793L8="
+			crossorigin="anonymous"></script>
 			<script type="text/javascript" src="maps.js"></script>
 			<link rel="stylesheet" type="text/css" href="maps.css">
-			<!--other script and also external css included over here-->
-      </head>
+	  </head>
 
     <body onload="initialize()">
 		<table>
 			<tr>
-				<div> 
-					<td colspan = "2"><h1>Search your destination</h1></td>
-				</div>
-			
+				<td colspan = "2"><h1>Search your destination</h1></td>
 			</tr>
 			<tr>
 				<td colspan = "2"><div>
@@ -26,7 +24,7 @@
 			</tr>
 			<tr>
 				<td colspan = "2"><fieldset>
-					<legend>Click to show location</legend>
+					<legend><h3 style = "color:green;">Click to show location</h3></legend>
 						<input type="checkbox" name="action" id="Synagogue" onclick="markerSelect(id)"/><label for="track">Synagogue</label><br />
 						<input type="checkbox" name="action" id="Kosher restaurant" onclick="markerSelect(id)"/><label for="track">Kosher restaurant</label><br />
 						<input type="checkbox" name="action" id="Mikveh" onclick="markerSelect(id)"/><label for="track">Mikveh</label><br />			
@@ -46,7 +44,45 @@
 				<td rowspan = "12"><div id="map"></div>
 				<h1 id="myMap">MAP GOES HERE</h1></td>
 			</tr>
+				<tr><td><h2>Add your Jewish location</h2></td></tr>
 			<tr>
+				<td><form id = "add-location" name="myForm" onsubmit= "return validateForm()" method ="post">
+					<div class="styled">
+						<select id="Type">
+							  <option value="Mikveh">Mikveh</option>
+							  <option value="Synagogue">Synagogue</option>
+							  <option value="Resteraunt">Resteraunt</option>
+							  <option value="ChabadHouse">Chabad House</option>
+							  <option value="JewishHouse">Jewish House</option>
+							  <option value="Other">Other</option>
+						</select>
+					</div> 
+						<br><br>
+						<div class= "textt">
+								Title:<br>
+							  <input type="text" id="Title" name="Title"><br>
+							  <table>
+									<tr>
+										<td> City: </td>
+										<td align= "left"> Address: </td>
+										<td>                </td>
+									</tr>
+									<tr>
+										<td>  <input type="text" id="City" name="City"> </td>
+										<td align= "left"><input type="text" id="Address" name="Address"><br> </td>
+										<td>                         </td>
+									</tr>
+								 </table>
+							   Description:<br>
+							  <textarea name="Description" id="Description" rows="10" cols="55" value=""></textarea> <br>
+							  <input type="submit" value="Submit">
+						</div> 
+					</form></td>
+			</tr>
+			<tr>
+				<td rowspan = "4"> </td>
+			</tr>
+			<!--<tr>
 				<td><h3>Get Directions</h3></td>
 			</tr>
 			<tr>
@@ -74,10 +110,8 @@
 					<option value="WALKING">Walking</option>
 				</select></td>
 				</div>
-			</tr>
-			<tr>
-				<td rowspan= "5"> </td>
-			</tr>
+			</tr>-->
+			
 		  <!--<input type="button" value="Get Directions" onclick="calcRoute()">-->
 	</table>
 </body>

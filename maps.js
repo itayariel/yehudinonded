@@ -283,3 +283,46 @@ function calcRoute() {
     }
   });
 }
+// check the validation of the form
+   function validateForm() {
+    var x = document.forms["myForm"]["Address"].value;
+    if (x == "") {
+        alert("Address must be filled out");
+         return false;
+         }
+    var y = document.forms["myForm"]["Description"].value;
+   if (y == "") {
+        alert("Description must be filled out");
+         return false;
+         }
+}
+//add a data
+$(document).ready(function(){
+	$('#add-location').on('submit', function(e){
+		e.preventDefult();
+		var Type = $('#Type').val();
+		var Address = $('#Address').val();
+		var Description = $('#Description').val();
+		var Title = $('#Title').val();
+		var City = $('#City').val();
+		
+	
+$.ajax({ url: "https://api.mlab.com/api/1/databases/mydata/collections/city?apiKey=ORlPGrQVCT2BKBjqZ38ae1z9vU5aj54U",
+		  data: JSON.stringify({
+			"type": Type,
+			"title": Title,
+			"city": City,
+			"address": Address,
+			"description": Description
+		  }),
+		  type: "POST",
+		  contentType: "application/json" 
+		  success: function(data){
+			window.location.href = "map.html"
+		  },
+		  error: function(xhr, status, err){
+			console.log(err);
+		  }
+		 });
+	});
+});
