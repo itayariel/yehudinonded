@@ -2,7 +2,7 @@
 <!DOCTYPE html>
   <html>
       <head>
-			<title> The Jewish traveler </title>
+			<title> JTraveler </title>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJpKHvZqDFWpdAbK5ViY8u7D2ISXKsqYs" type="text/javascript"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 			<script src="https://code.jquery.com/jquery-1.12.0.min.js" integrity="sha256-Xxq2X+KtazgaGuA2cWR1v3jJsuMJUozyIXDB3e793L8="
@@ -12,18 +12,20 @@
 	  </head>
 
     <body onload="initialize()">
-		<table>
-			<tr>
-				<td colspan = "2"><h1>Search your destination</h1></td>
-			</tr>
-			<tr>
-				<td colspan = "2"><div>
-					<input id="address" type="textbox" placeholder="Enter a new location">
-					<input type="button" value="Go" onclick="goTo()"> </td>
-				</div>
-			</tr>
-			<tr>
-				<td colspan = "2"><fieldset>
+		<header>
+			<div class="topnav" id="myTopnav">
+				<a href="#Search">Search</a> 
+				<a href="#myMap">Add location</a> 
+				<a href="#About">About us</a>
+				<a href="#add-location">Halakha collection</a>
+			</div>
+		</header>
+            <h1 id="Search">Search your destination</h1>
+			<div>
+                <input id="address" type="textbox" placeholder="Enter a new location">
+                <input type="button" value="Go" onclick="goTo()"> 
+            </div>
+			<fieldset>
 					<legend><h3 style = "color:green;">Click to show location</h3></legend>
 						<input type="checkbox" name="action" id="Synagogue" onclick="markerSelect(id)"/><label for="track">Synagogue</label><br />
 						<input type="checkbox" name="action" id="Kosher restaurant" onclick="markerSelect(id)"/><label for="track">Kosher restaurant</label><br />
@@ -31,22 +33,21 @@
 						<input type="checkbox" name="action" id="Chabad house" onclick="markerSelect(id)"/><label for="track">Chabad house</label><br />	
 						<input type="checkbox" name="action" id="Jewish house" onclick="markerSelect(id)"/><label for="track">Jewish house</label><br />			
 						<input type="checkbox" name="action" id="Show all" onclick="markerSelect(id)"/><label for="track">Show all</label><br />			
-				</fieldset></td>
+				</fieldset>
 				<br>
-			</tr>
-			<tr>
-				<td> <br> </td>
-			</tr>
-			<tr>
-				<td><div id="floating-panel">
+			<div id="floating-panel">
 					<input onclick="clearMarkers();" type=button value="Hide Markers">
-				</div></td>
-				<td rowspan = "12"><div id="map"></div>
-				<h1 id="myMap">MAP GOES HERE</h1></td>
-			</tr>
-				<tr><td><h2>Add your Jewish location</h2></td></tr>
-			<tr>
-				<td><form id = "add-location" name="myForm" onsubmit= "return validateForm()" method ="post">
+				</div><br>
+				<div id="map"></div>
+				<h1 id="myMap">MAP GOES HERE</h1>
+				
+				
+				
+				
+				
+				
+			<h2 id="add">Add your Jewish location</h2>
+			<form name="myForm">
 					<div class="styled">
 						<select id="Type">
 							  <option value="Mikveh">Mikveh</option>
@@ -61,58 +62,33 @@
 						<div class= "textt">
 								Title:<br>
 							  <input type="text" id="Title" name="Title"><br>
-							  <table>
-									<tr>
-										<td> City: </td>
-										<td align= "left"> Address: </td>
-										<td>                </td>
-									</tr>
-									<tr>
-										<td>  <input type="text" id="City" name="City"> </td>
-										<td align= "left"><input type="text" id="Address" name="Address"><br> </td>
-										<td>                         </td>
-									</tr>
-								 </table>
+							  City:<br>
+								<select id="Type">
+									  <option value="Jerusalem">Jerusalem</option>
+									  <option value="Rome">Rome</option>
+									  <option value="Venice">Venice</option>
+									  <option value="Florence">Florence</option>
+									  <option value="Milan">Milan</option>
+									  <option value="Verona">Verona</option>
+								</select><br>
+								<br>
+							  Address:<br>
+							  <input type="text" id="Address" name="Address"><br>
 							   Description:<br>
 							  <textarea name="Description" id="Description" rows="10" cols="55" value=""></textarea> <br>
-							  <input type="submit" value="Submit">
+							  <input type="button" id = "add-location" value="Submit">
 						</div> 
-					</form></td>
-			</tr>
-			<tr>
-				<td rowspan = "4"> </td>
-			</tr>
-			<!--<tr>
-				<td><h3>Get Directions</h3></td>
-			</tr>
-			<tr>
-				<td><strong>Start: </strong></td>
-			</tr>
-			<tr>
-				<div>
-					<td><input id="start" type="text" size="50" placeholder="Enter locations"></td>
-				</div>
-			</tr>
-			<tr>
-				<td><strong>End: </strong></td>
-			</tr>
-			<tr>
-				<div>
-					<td><input id="end" type="text" size="50" placeholder="Enter locations"></td>
-				</div>
-			</tr>
-			<br>
-			<tr>
-				<div>
-				<td><select id="travelMode" onchange="calcRoute()">
-					<option value="NONE">Choose Transportation Method</option>
-					<option value="DRIVING">Driving</option>
-					<option value="WALKING">Walking</option>
-				</select></td>
-				</div>
-			</tr>-->
-			
-		  <!--<input type="button" value="Get Directions" onclick="calcRoute()">-->
-	</table>
+					</form>
+        <div align="right">
+            <article id = "About">
+            <h1>About us</h1>
+                The goal of this site is to collect together all the Jewish sites that exists all over the world.<br>
+                When religious people travel around the world, they have to consider where they will do Shabbat, eat kosher meals, pray, etc.<br>
+                This site will gother all these places and all the information that exsists on these places.<br>
+                In addition, it is possible to add new places to the site so that other people will be able to enjoy them as well<br>
+            </article>
+		</div>
+		<img src="image/travel.jpg" id= "travel">
+		
 </body>
 </html>

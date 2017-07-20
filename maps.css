@@ -1,36 +1,73 @@
+body{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f3f3f3+50,ededed+51,ffffff+100;White+Gloss+%232 */
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 
-body {
-     background-image: url("image/greenn.jpg");
-	 background-size: 1400px 1200px;
-	 background-repeat: no-repeat;
-	 color: green;
-	 font-weight: bold;
-} 
-table{
-	width:100%;
+    font-family: 'Noto Serif';
+
 }
+#About{
+
+	align: right;
+    text-align: left;
+	font-size:200%;
+	height:50%;
+	width:50%;
+}
+#travel{
+	width: 520px;
+	position: absolute;
+    left: 0px;
+    top: 1400px;
+}
+
+.topnav {
+    background-color:  	#556B2F;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
 #myMap{
    position:fixed;
 	margin: 0;
 	padding: 0;
-	width: 650px;
-	height: 520px;
+	width:100%;
+	height: 400px;
 	max-width: none;
 	border: 30;
 	frameborder: 40;
 }
-#frame-container {
-    background-color: #607D8B;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    border:50px solid red;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
+fieldset{
+	width:35%;
+	font-size:100%;
 }
 input[type="button"]{
-    background-color: #4CAF50; /* Green */
+    background-color: #556B2F; /* Green */
     border: none;
     color: white;
     padding: 5px 15px;
@@ -42,7 +79,7 @@ input[type="button"]{
 	border-radius: 15px;
 }
 input[type="submit"]{
-    background-color: #4CAF50; /* Green */
+    background-color: #556B2F; /* Green */
     border: none;
     color: white;
     padding: 5px 15px;
@@ -122,14 +159,31 @@ input[type=texterea] {
     width: 100%;
     height: 150px;
 }
-.styled{
-   background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
-   height: 34px;
-   width: 240px;
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 20px;
- background-color: #eec111; }
- .textt{
-	 font-size: 200%;
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #9ACD32;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
 }
